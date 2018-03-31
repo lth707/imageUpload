@@ -18,7 +18,6 @@ router.post('/upload', multiparty, function (req, res, next) {
       req.files.files = [req.files.files]
     }
     for (let file of req.files.files) {
-      console.log(file.path)
       urls.push(`http://${req.headers.host}/imgupload/${path.basename(file.path)}`)
     }
     res.json({ urls })

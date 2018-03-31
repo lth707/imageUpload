@@ -81,7 +81,7 @@
                 success: function (result) {
                     var urls = result.urls
                     for (var i = 0; i < urls.length; i++) {
-                        $imgul.append($('<li><img src="' + urls[i] + '" /></li>'))
+                        $imgul.append($('<li><div class="img-div"><img src="' + urls[i] + '" /><a class="del-btn"></a></div></li>'))
                     }
                 },
                 error: function (error) {
@@ -89,5 +89,8 @@
                 }
             })
         }
+        $imgul.on('click','.del-btn',function(){
+            $(this).closest('li').remove()
+        })
     }
 })(jQuery)

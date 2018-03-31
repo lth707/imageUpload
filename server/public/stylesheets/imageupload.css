@@ -48,3 +48,25 @@
 .image-upload-filed ul li img {
     height: 85px;
 }
+
+.image-upload-filed ul li .img-div {
+    position: relative;
+}
+
+.image-upload-filed ul li .img-div .del-btn {
+    background: url('../images/delete.png');
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    top: -10px;
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.5);
+    border-radius: 50%;
+    border: 1px solid #000;
+    cursor: pointer;
+    display: none;
+}
+
+.image-upload-filed ul li .img-div:hover .del-btn {
+    display: block;
+}
