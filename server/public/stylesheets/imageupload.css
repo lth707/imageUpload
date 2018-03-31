@@ -13,6 +13,19 @@
     -ms-transform: translate(-50%, -50%);
 }
 
+.image-upload-filed .upload-btn.has-img {
+    position: inherit;
+    transform: translate(-0%, -0%);
+    -moz-transform: translate(-0%, -0%);
+    -webkit-transform: translate(-0%, -0%);
+    -o-transform: translate(-0%, -0%);
+    -ms-transform: translate(-0%, -0%);
+    top: 0;
+    left: 0;
+    margin: 0;
+    display: inline-block;
+}
+
 .image-upload-filed .tip-model {
     background-color: rgba(255, 255, 255, 0.5);
     width: 100%;

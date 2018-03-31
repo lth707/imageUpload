@@ -83,14 +83,20 @@
                     for (var i = 0; i < urls.length; i++) {
                         $imgul.append($('<li><div class="img-div"><img src="' + urls[i] + '" /><a class="del-btn"></a></div></li>'))
                     }
+                    if ($imgul.children().length) {
+                        $uploadbtn.addClass('has-img')
+                    }
                 },
                 error: function (error) {
                     alert(error)
                 }
             })
         }
-        $imgul.on('click','.del-btn',function(){
+        $imgul.on('click', '.del-btn', function () {
             $(this).closest('li').remove()
+            if (!$imgul.children().length) {
+                $uploadbtn.removeClass('has-img')
+            }
         })
     }
 })(jQuery)
