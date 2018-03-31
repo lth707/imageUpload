@@ -46,6 +46,7 @@
         })
         $fileupInput.change(function () {
             uploadToServer(this.files)
+            return false;
         })
         function setTipText(text) {
             $tip.text(text)
@@ -63,12 +64,30 @@
             var originEvent = event.originalEvent;
             //拿到拽入的文件
             var files = originEvent.dataTransfer.files;
-            uploadToServer(files)
+            uploadToServer(files);
+            return false;
         }
         function uploadToServer(files) {
+            var formData = new FormData();
             for (var i = 0; i < files.length; i++) {
-                $imgul.append($('<li><img src="./image/add_image.png" /></li>'))
+                formData.append('files', files[i])
             }
+            $.ajax({
+                url: url,
+                type: 'post',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    var urls = result.urls
+                    for (var i = 0; i < urls.length; i++) {
+                        $imgul.append($('<li><img src="' + urls[i] + '" /></li>'))
+                    }
+                },
+                error: function (error) {
+                    alert(error)
+                }
+            })
         }
     }
 })(jQuery)

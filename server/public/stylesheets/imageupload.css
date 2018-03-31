@@ -1,5 +1,5 @@
 .image-upload-filed .upload-btn {
-    background-image: url('./image/add_image.png');
+    background-image: url('../images/add_image.png');
     width: 100px;
     height: 100px;
     margin: 0 auto;
@@ -39,7 +39,12 @@
     padding: 0px;
     margin: 0px;
 }
-.image-upload-filed ul li{
+
+.image-upload-filed ul li {
     float: left;
     margin: 10px;
+}
+
+.image-upload-filed ul li img {
+    height: 85px;
 }
