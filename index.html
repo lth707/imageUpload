@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="content-type">
+    <link href="./imageupload.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="./jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./jquery.imageupload.js"></script>
+    <style>
+        #upload-field {
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="upload-field">
+        <ul><li><img src="./image/add_image.png" /></li></ul>
+    </div>
+</body>
+<script>
+    $(function () {
+        $('#upload-field').imageupload({ url: '' })
+    })
+</script>
+
+</html>

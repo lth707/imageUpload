@@ -1,0 +1,45 @@
+.image-upload-filed .upload-btn {
+    background-image: url('./image/add_image.png');
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.image-upload-filed .tip-model {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: center;
+    display: none;
+    border: 2px dashed #21a0ff;
+}
+
+.image-upload-filed .tip-model .tip {
+    border: 2px solid #21a0ff;
+    padding: 10px;
+    font-size: 18px;
+    margin: 30px auto;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.image-upload-filed ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+.image-upload-filed ul li{
+    float: left;
+    margin: 10px;
+}
