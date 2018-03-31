@@ -1,5 +1,5 @@
 .image-upload-filed .upload-btn {
-    background-image: url('../images/add_image.png');
+    background-image: url('./images/add_image.png');
     width: 100px;
     height: 100px;
     margin: 0 auto;
@@ -67,7 +67,7 @@
 }
 
 .image-upload-filed ul li .img-div .del-btn {
-    background: url('../images/delete.png');
+    background: url('./images/delete.png');
     width: 20px;
     height: 20px;
     right: -10px;
