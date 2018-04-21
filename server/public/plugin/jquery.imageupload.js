@@ -2,9 +2,13 @@
     $.fn.imageupload = function ($option) {
         //init dom
         var url = $option.url;
+        var handleSuccess = $option.handleSuccess;
+        var handleError = $option.handleError;
+        var handleDelete = $option.handleDelete;
+        var handleClick = $option.handleClick;
         var $this = $(this);
         $this.addClass('image-upload-filed')
-        var $uploadbtn = $('<div class="upload-btn"></div>');
+        var $uploadbtn = $('<div class="upload-btn"><img src="./plugin/images/add_image.png"/>可拖图片上传</div>');
         var $tipmodal = $('<div class="tip-model"></div>');
         var $tip = $('<span class="tip"></span>');
         var tip_no_drag = "将图片拖拽到此区域上传"
@@ -67,6 +71,12 @@
             uploadToServer(files);
             return false;
         }
+        function isFunction(handle) {
+            return handle && typeof handle === 'function';
+        }
+        function isArray(arr) {
+            return arr && (arr instanceof Array);
+        }
         function uploadToServer(files) {
             var formData = new FormData();
             for (var i = 0; i < files.length; i++) {
@@ -79,23 +89,65 @@
                 processData: false,
                 contentType: false,
                 success: function (result) {
-                    var urls = result.urls
+                    var urls = result.urls;
+                    var ids = result.ids;
+                    var errMsg = '';
+                    if (!urls) {
+                        errMsg = '必须返回urls参数';
+                    }
+                    if (!errMsg && !ids) {
+                        errMsg = '必须返回ids参数';
+                    }
+                    if (!errMsg && !isArray(urls)) {
+                        errMsg = 'urls参数必须是数组';
+                    }
+                    if (!errMsg && !isArray(ids)) {
+                        errMsg = 'ids参数必须是数组';
+                    }
+                    if (!errMsg && ids.length != urls.length) {
+                        errMsg = 'urls参数长度必须等于ids参数的长度';
+                    }
+                    if (errMsg) {
+                        console.error(errMsg);
+                        if (isFunction(handleError)) {
+                            handleError(errMsg);
+                        }
+                        return false
+                    }
                     for (var i = 0; i < urls.length; i++) {
-                        $imgul.append($('<li><div class="img-div"><img src="' + urls[i] + '" /><a class="del-btn"></a></div></li>'))
+                        $imgul.append($('<li><div class="img-div"><img src="' + urls[i] + '" data-id="' + ids[i] + '" class="open-img"/><a class="del-btn" data-id="' + ids[i] + '"></a></div></li>'))
                     }
                     if ($imgul.children().length) {
                         $uploadbtn.addClass('has-img')
                     }
+                    if (isFunction(handleSuccess)) {
+                        handleSuccess(result)
+                    }
                 },
                 error: function (error) {
-                    alert(error)
+                    if (error) {
+                        console.error(error)
+                        if (isFunction(handleError)) {
+                            handleError(error)
+                        }
+                    }
                 }
             })
         }
         $imgul.on('click', '.del-btn', function () {
-            $(this).closest('li').remove()
+            var $this = $(this)
+            $this.closest('li').remove()
+            if (isFunction(handleDelete)) {
+                handleDelete($this.data('id'))
+            }
             if (!$imgul.children().length) {
                 $uploadbtn.removeClass('has-img')
+            }
+        })
+        $imgul.on('click', '.open-img', function () {
+            var $this = $(this)
+            if (isFunction(handleClick)) {
+                handleClick($this.data('id'))
             }
         })
     }

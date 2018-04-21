@@ -1,5 +1,9 @@
+.image-upload-filed {
+    border: 1px solid #f5f5f5
+}
+
 .image-upload-filed .upload-btn {
-    background-image: url('./images/add_image.png');
+    /* background-image: url('./images/add_image.png'); */
     width: 100px;
     height: 100px;
     margin: 0 auto;
