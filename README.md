@@ -8,6 +8,7 @@ imageUpload可拖拽上传图片的jquery插件
 cd server
 npm i
 npm start
+访问localhost:3000
 ```
 
 ## 前端引入插件的样式和js文件，注意jquery要先引入
@@ -21,8 +22,22 @@ npm start
 ## 使用插件
 
 ``` js
-$(function () {
-    $('#upload-field').imageupload({ url: '/upload' })
+ $(function () {
+    $('#upload-field').imageupload({
+        url: '/upload', //上传图片的地址
+        handleSuccess: function (result) {
+            console.log(result); //上传图片成功的回调函数
+        },
+        handleError: function (error) {
+            console.log(error); //上传图片失败的回调函数
+        },
+        handleClick: function (id) {
+            console.log(id); //点击图片的回调函数
+        },
+        handleDelete: function (id) {
+            console.log(id); //删除图片的回调函数
+        }
+    })
 })
 ```
 
