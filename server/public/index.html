@@ -18,7 +18,21 @@
 </body>
 <script>
     $(function () {
-        $('#upload-field').imageupload({ url: '/upload' })
+        $('#upload-field').imageupload({
+            url: '/upload',
+            handleSuccess: function (result) {
+                console.log(result);
+            },
+            handleError: function (error) {
+                console.log(error);
+            },
+            handleClick: function (id) {
+                console.log(id);
+            },
+            handleDelete: function (id) {
+                console.log(id);
+            }
+        })
     })
 </script>
 

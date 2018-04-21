@@ -17,10 +17,13 @@ router.post('/upload', multiparty, function (req, res, next) {
     if (!(req.files.files instanceof Array)) {
       req.files.files = [req.files.files]
     }
+    let ids = [] //这里的id为后台生成的唯一id
+    let id = 0
     for (let file of req.files.files) {
       urls.push(`http://${req.headers.host}/imgupload/${path.basename(file.path)}`)
+      ids.push(++id)
     }
-    res.json({ urls })
+    res.json({ urls, ids })
   }
 })
 module.exports = router;
