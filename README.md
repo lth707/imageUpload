@@ -42,4 +42,6 @@ npm start
 ```
 
 ## 运行效果
+>![enter description here][1]
 
+[1]: https://github.com/lth707/imageUpload/blob/master/%E8%BF%90%E8%A1%8C%E6%95%88%E6%9E%9C/show.gif "show.gif"
